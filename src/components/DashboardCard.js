@@ -1,11 +1,24 @@
-export default function DashboardCard({ title, value, icon }) {
+import { FiVideo, FiClock, FiShare2, FiUser } from 'react-icons/fi'
+
+const icons = {
+  recordings: <FiVideo />,
+  hours: <FiClock />,
+  shared: <FiShare2 />,
+  users: <FiUser />,
+}
+
+const DashboardCard = ({ icon, title, value }) => {
   return (
-    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md flex items-center transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
-      <div className="mr-4 text-2xl text-gray-600 dark:text-gray-300">{icon}</div>
+    <div className="bg-card-bg p-6 rounded-lg shadow flex items-center">
+      <div className="bg-primary-light text-primary p-3 rounded-full mr-4 text-2xl">
+        {icons[icon]}
+      </div>
       <div>
-        <h3 className="text-gray-500 dark:text-gray-400 text-sm font-medium">{title}</h3>
-        <p className="text-2xl font-bold text-gray-800 dark:text-white">{value}</p>
+        <p className="text-sm text-text-light">{title}</p>
+        <p className="text-2xl font-bold text-text-dark">{value}</p>
       </div>
     </div>
-  );
+  )
 }
+
+export default DashboardCard
